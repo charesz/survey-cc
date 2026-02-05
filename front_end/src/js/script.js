@@ -191,19 +191,38 @@ function handleValidationError(elementId, message) {
 // 1. Authentication Page Logic
 function startQuiz() {
     const nameInput = document.getElementById("playerName");
-    const input = nameInput.value.trim();
-    
-    if (!input) {
-        handleValidationError("name-panel", "*THOU MUST ENGRAVE A NAME TO BEGIN THE QUEST!*");
+    const rawInput = nameInput.value.trim();
+
+    // Allow letters and spaces only
+    const nameRegex = /^[A-Za-z\s]+$/;
+
+    if (!rawInput) {
+        handleValidationError(
+            "name-panel",
+            "*THOU MUST ENGRAVE A NAME TO BEGIN THE QUEST!*"
+        );
         return;
     }
-    
-    playerName = input.substring(0, 20).toUpperCase();
+
+    if (!nameRegex.test(rawInput)) {
+        handleValidationError(
+            "name-panel",
+            "*ONLY LETTERS MAY BE INSCRIBED UPON THE SCROLL!*"
+        );
+        return;
+    }
+
+    // Standardize: trim, limit length, convert to ALL CAPS
+    playerName = rawInput
+        .substring(0, 20)
+        .toUpperCase();
+
     localStorage.setItem("playerName", playerName);
     localStorage.removeItem("answers"); // Clear old answers
-    
-    window.location.href = "../pages/questions.html"; // Redirect to Questions Page
+
+    window.location.href = "../pages/questions.html";
 }
+
 
 // 2. Questions Page Logic
 function nextQuestion(currentId, nextId, inputName) {
