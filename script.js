@@ -1,20 +1,17 @@
 // --- Configuration ---
-let playerName = "";
-let answers = {};
-const TYPING_DELAY = 1.3; // Time in seconds for the typing animation
+let playerName = localStorage.getItem("playerName") || "";
+let answers = JSON.parse(localStorage.getItem("answers")) || {};
+const TYPING_DELAY = 1.3; 
 
 const classData = {
-    1: { // Tagapaghinuha (Analytical Thinker)
+    1: { // Tagapaghinuha
         flavor: `
         <h2 class="archetype-title">Tagapaghinuha</h2>
         <p class="subtitle">The One Who Deduces / The Seer</p>
         <p class="ds-meta"><strong> Data Science Archetype:</strong> Analyst</p>
-        
         <p class="desc">From hinuha (to infer or deduce).The Tagapaghinuha sees meaning where others see noise. They connect scattered data into insight—much like a seer reading signs in the stars or a Wakandan strategist reading vibranium readings.</p>
-        
         <p class="vibe"><strong>Mythic Vibe:</strong> A modern babaylan of numbers—quiet, observant, deadly accurate.</p>
         <p class="traits"><strong>Core Skills:</strong> Critical thinking, logic, pattern recognition, inference.</p>
-        
         <div class="target-audience">
             <strong>Perfect for those who:</strong>
             <ul>
@@ -27,18 +24,14 @@ const classData = {
         color: "#3E8EBA",
         bgStyle: "radial-gradient(circle, rgba(62,142,186,0.6) 0%, rgba(34,46,35,0) 70%)"
     },
-
-    2: { // Tagapagsalaysay (Communicator / Storyteller)
+    2: { // Tagapagsalaysay
         flavor: `
         <h2 class="archetype-title">Tagapagsalaysay</h2>
         <p class="subtitle">The Story-Carrier / The Messenger</p>
         <p class="ds-meta"><strong>Data Science Archetype:</strong> Visualization Expert</p>
-        
         <p class="desc">From salaysay (to narrate). This archetype transforms raw data into stories that move people—policy makers, communities, or entire nations. In a Wakandan sense, they are the ones who translate science into collective vision.</p>
-        
         <p class="vibe"><strong>Mythic Vibe:</strong> A techno-makata (poet) who speaks in graphs, colors, and meaning.</p>
         <p class="traits"><strong>Core Skills:</strong> Storytelling, visualization, communication</p>
-        
         <div class="target-audience">
             <strong>Perfect for those who:</strong>
             <ul>
@@ -51,18 +44,14 @@ const classData = {
         color: "#C45A29",
         bgStyle: "radial-gradient(circle, rgba(196,90,41,0.6) 0%, rgba(34,46,35,0) 70%)"
     },
-
-    3: { // Tagapangalaga (Ethical Guardian)
+    3: { // Tagapangalaga
         flavor: `
         <h2 class="archetype-title">Tagapangalaga</h2>
         <p class="subtitle">The Guardian / The Steward</p>
         <p class="ds-meta"><strong>Data Science Archetype:</strong> Ethical Analyst</p>
-        
         <p class="desc">From alaga (to care for). The Tagapangalaga ensures data is used ethically, accurately, and with respect for people. In a Filipino context, this aligns with kapwa—shared humanity.</p>
-        
         <p class="vibe"><strong>Mythic Vibe:</strong> A Wakandan-style protector of sacred knowledge—data is power, and power must be guarded.</p>
-        <p class="traits"><strong>Core Skills:</strong>  Integrity, responsibility, fairness, risk awareness</p>
-        
+        <p class="traits"><strong>Core Skills:</strong> Integrity, responsibility, fairness, risk awareness</p>
         <div class="target-audience">
             <strong>Perfect for those who:</strong>
             <ul>
@@ -75,18 +64,14 @@ const classData = {
         color: "#4E7C52",
         bgStyle: "radial-gradient(circle, rgba(78,124,82,0.6) 0%, rgba(34,46,35,0) 70%)"
     },
-
-    4: { // Tagapag-ugnay (Connector / Big-Picture Thinker)
+    4: { // Tagapag-ugnay
         flavor: `
         <h2 class="archetype-title">Tagapag-ugnay</h2>
         <p class="subtitle">The Connector / The Weaver</p>
         <p class="ds-meta"><strong>Data Science Archetype:</strong> Integrator</p>
-        
         <p class="desc">From ugnay (to connect). This archetype bridges people, datasets, and disciplines—tech, society, culture. They understand that data science doesn’t exist in isolation.</p>
-        
         <p class="vibe"><strong>Mythic Vibe:</strong> A diplomatic engineer—like Wakandan liaisons who unite tribes through shared intelligence.</p>
         <p class="traits"><strong>Core Skills:</strong>Collaboration, systems thinking, interdisciplinary work</p>
-        
         <div class="target-audience">
             <strong>Perfect for those who:</strong>
             <ul>
@@ -99,18 +84,14 @@ const classData = {
         color: "#d64270",
         bgStyle: "radial-gradient(circle, rgba(214,66,112,0.6) 0%, rgba(34,46,35,0) 70%)"
     },
-
-    5: { // Tagapagsubok (Experimenter)
+    5: { // Tagapagsubok
         flavor: `
         <h2 class="archetype-title">Tagapagsubok</h2>
         <p class="subtitle">The Experimenter / The Alchemist</p>
         <p class="ds-meta"><strong>Data Science Archetype:</strong> Model Builder</p>
-        
         <p class="desc"> From subok (to test or experiment). The Tagapagsubok isn’t afraid to fail. They tweak models, test assumptions, and push boundaries—very Wakandan R&D energy.</p>
-
         <p class="vibe"><strong>Mythic Vibe:</strong> A fearless innovator playing with future-tech and probabilities.</p>
         <p class="traits"><strong>Core Skills:</strong> Curiosity, experimentation, iteration, hypothesis testing</p>
-
         <div class="target-audience">
             <strong>Perfect for those who:</strong>
             <ul>
@@ -123,18 +104,14 @@ const classData = {
         color: "#A52A2A",
         bgStyle: "radial-gradient(circle, rgba(165,42,42,0.6) 0%, rgba(34,46,35,0) 70%)"
     },
-
-    6: { // Tagapagmasid (Observer)
+    6: { // Tagapagmasid
         flavor: `
         <h2 class="archetype-title">Tagapagmasid</h2>
         <p class="subtitle">The Watcher / The Sentinel</p>
         <p class="ds-meta"><strong>Data Science Archetype:</strong> Data Explorer</p>
-        
         <p class="desc"> From masid (to observe closely). This archetype believes understanding comes before action. They sit with the data, question it, and notice anomalies others miss.</p>
-
         <p class="vibe"><strong>Mythic Vibe:</strong> A sentinel of truth—watching streams of information like a guardian watching the horizon.</p>
         <p class="traits"><strong>Core Skills:</strong> Observation, patience, data cleaning, exploration</p>
-        
         <div class="target-audience">
             <strong>Perfect for those who:</strong>
             <ul>
@@ -147,18 +124,14 @@ const classData = {
         color: "#6A5ACD",
         bgStyle: "radial-gradient(circle, rgba(106,90,205,0.6) 0%, rgba(34,46,35,0) 70%)"
     },
-
-    7: { // Tagapaglikha (Creator / Builder)
+    7: { // Tagapaglikha
         flavor: `
         <h2 class="archetype-title">Tagapaglikha</h2>
         <p class="subtitle">The Creator / The Architect</p>
         <p class="ds-meta"><strong>Data Science Archetype:</strong> Innovator</p>
-        
         <p class="desc">From likha (to create). This archetype turns insight into action—apps, systems, solutions. They build things that exist in the world. Like Wakandan engineers, they blend creativity with cutting-edge tech.</p>
-
         <p class="vibe"><strong>Mythic Vibe:</strong> A Wakandan technosmith—where code meets culture.</p>
         <p class="traits"><strong>Core Skills:</strong> Creativity, problem-solving, applied thinking</p>
-        
         <div class="target-audience">
             <strong>Perfect for those who:</strong>
             <ul>
@@ -184,7 +157,6 @@ const answerMapping = {
   q7:{A:{7:5,5:3,4:2},B:{1:5,7:2,6:2},C:{2:5,7:2,4:2},D:{3:5,7:2,2:2}}
 };
 
-// --- Bias Normalization ---
 const archetypeExposure = {1:13, 2:13, 3:12, 4:12, 5:12, 6:12, 7:12};
 
 // --- Utility Functions ---
@@ -203,54 +175,37 @@ function updateProgress() {
 
 function handleValidationError(elementId, message) {
     console.warn(`[VALIDATION FAILED] Screen: ${elementId}. Error: ${message.replace(/\*/g, '')}`);
-    
     const element = document.getElementById(elementId);
     if (element) {
         element.classList.add('validation-error');
-        setTimeout(() => {
-            element.classList.remove('validation-error');
-        }, 500);
+        setTimeout(() => element.classList.remove('validation-error'), 500);
     }
-
     const msgBox = document.getElementById('messageBox');
-    msgBox.innerText = message || "*SELECT AN OPTION TO PROCEED, ADVENTURER!*";
+    msgBox.innerText = message || "*SELECT AN OPTION TO PROCEED!*";
     msgBox.style.display = 'block';
-    
-    setTimeout(() => {
-        msgBox.style.display = 'none';
-    }, 2000); 
+    setTimeout(() => msgBox.style.display = 'none', 2000); 
 }
 
-// --- Core Quiz Logic ---
+// --- Page Logic ---
 
+// 1. Authentication Page Logic
 function startQuiz() {
     const nameInput = document.getElementById("playerName");
     const input = nameInput.value.trim();
     
-    // **NAME VALIDATION**
     if (!input) {
         handleValidationError("name-panel", "*THOU MUST ENGRAVE A NAME TO BEGIN THE QUEST!*");
         return;
     }
     
     playerName = input.substring(0, 20).toUpperCase();
+    localStorage.setItem("playerName", playerName);
+    localStorage.removeItem("answers"); // Clear old answers
     
-    console.log(`\n=== QUIZ START ===`);
-    console.log(`Player Name Set: ${playerName}`);
-    
-    document.getElementById("startScreen").classList.remove("active");
-    document.getElementById("q1Screen").classList.add("active");
-    updateProgress();
-    
-    setTimeout(() => {
-        const firstOption = document.querySelector('#q1Screen .option-container input[type="radio"]');
-        if (firstOption) {
-            firstOption.focus();
-        
-        }
-    }, 600);
+    window.location.href = "questions.html"; // Redirect to Questions Page
 }
 
+// 2. Questions Page Logic
 function nextQuestion(currentId, nextId, inputName) {
     let val;
     let isValid = false;
@@ -258,7 +213,6 @@ function nextQuestion(currentId, nextId, inputName) {
     let checkedInput = [...input].find(i => i.checked);
     const panelId = inputName + '-panel';
 
-    // **ANSWER VALIDATION**
     if (checkedInput) {
         val = checkedInput.value;
         isValid = true;
@@ -266,172 +220,144 @@ function nextQuestion(currentId, nextId, inputName) {
     
     if (!isValid) {
         handleValidationError(panelId, "*CHOOSE WISELY, OR THE PATH AHEAD WILL NOT OPEN!*");
-        return; // STOP HERE if no answer chosen
+        return;
     }
     
+    // Save to local variable AND storage
     answers[inputName] = val;
+    localStorage.setItem("answers", JSON.stringify(answers));
     
-    console.log(`[ANSWERED] ${inputName}: ${val}`);
-
-    // Update UI
-    [...input].forEach(i => {
-        i.nextElementSibling.setAttribute('aria-checked', i.checked.toString());
-    });
-
+    // UI Updates
+    [...input].forEach(i => i.nextElementSibling.setAttribute('aria-checked', i.checked.toString()));
     document.getElementById(currentId).classList.remove("active");
     document.getElementById(nextId).classList.add("active");
+    updateProgress();
     
-    if (nextId !== 'resultScreen') {
-        updateProgress();
-        
-        setTimeout(() => {
-            const firstOption = document.querySelector(`#${nextId} .option-container input[type="radio"]`);
-            if (firstOption) {
-                firstOption.focus();
-
-            }
-        }, 400);
-    }
+    // Focus next option
+    setTimeout(() => {
+        const firstOption = document.querySelector(`#${nextId} .option-container input[type="radio"]`);
+        if (firstOption) firstOption.focus();
+    }, 400);
 }
 
 function submitQuiz() {
     let q7Input = document.getElementsByName("q7");
     let checkedQ7 = [...q7Input].find(i => i.checked);
     
-    // **FINAL QUESTION VALIDATION**
     if (!checkedQ7) {
         handleValidationError("q7-panel", "*ANSWER THE FINAL QUESTION TO SEAL YOUR DESTINY!*");
         return;
     }
+    
     answers["q7"] = checkedQ7.value;
-    console.log(`[ANSWERED] q7: ${checkedQ7.value}`);
+    localStorage.setItem("answers", JSON.stringify(answers));
 
-    [...q7Input].forEach(i => {
-        i.nextElementSibling.setAttribute('aria-checked', i.checked.toString());
-    });
+    window.location.href = "results.html"; // Redirect to Results Page
+}
+
+// 3. Results Page Logic
+function initResultPage() {
+    if(!document.getElementById('page-results')) return;
+
+    // Check if data exists
+    if (!answers || Object.keys(answers).length === 0) {
+        // If no answers, redirect back to start
+        window.location.href = "authentication.html";
+        return;
+    }
 
     calculateResult();
 }
 
-// --- Result Calculation ---
 function calculateResult() {
     console.log('=== CALCULATING RESULT ===');
-    console.log('Answers:', answers);
-
-    // Tally weighted points
     let tally = {1:0,2:0,3:0,4:0,5:0,6:0,7:0};
+    
     for (const q in answers) {
         const letter = answers[q];
-        const weights = answerMapping[q][letter];
-        for (const id in weights) tally[id] += weights[id];
+        if(answerMapping[q] && answerMapping[q][letter]) {
+            const weights = answerMapping[q][letter];
+            for (const id in weights) tally[id] += weights[id];
+        }
     }
-    console.log('Raw tally:', tally);
 
-
-    // Normalize
     for (const id in tally) tally[id] /= archetypeExposure[id];
-    console.log('Normalized tally:', tally);
 
-    // Determine winner
     let max = -Infinity, finalId = 1;
     for (const [id, val] of Object.entries(tally)) {
-        if (val>max) { max=val; finalId=Number(id); }
+        if (val > max) { max = val; finalId = Number(id); }
     }
-    console.log(`FINAL CLASS: ${finalId}`);
 
-    const result = classData[finalId];
-    if (!result) return console.error('Class data missing');
-    
-    console.log(`Tally:`, tally);
-    console.log(`FINAL CLASS ID: ${finalId} (Score: ${max})`);
-
-    // Grab result info from classData
     const resultInfo = classData[finalId];
-    if (!resultInfo) {
-        console.error("Error: Result class data not found!");
-        return;
-    }
-
-    // Hide last question screen and progress bar
-    document.getElementById("q7Screen").classList.remove("active");
-    document.getElementById("progress-bar-container").style.display = 'none';
-
-    const resultScreen = document.getElementById("resultScreen");
-    resultScreen.classList.add("active");
+    if (!resultInfo) return;
 
     // Thematic visual feedback
     const quizContainer = document.querySelector('.quiz-container');
     quizContainer.style.boxShadow = `0 0 0 4px ${resultInfo.color}, 4px 4px 0 var(--pixel-border-thick) ${resultInfo.color}`;
 
-    // --- Result text ---
+    // Result Text
     const finalClassNameElement = document.getElementById("finalClassName");
-    const isMobile = window.innerWidth <= 600;
-
     finalClassNameElement.innerText = `Behold thy fate, ${playerName}!`;
     finalClassNameElement.style.color = resultInfo.color;
     finalClassNameElement.style.overflow = 'hidden';
 
-    // Responsive Logic 
+    // Animation Logic
+    const isMobile = window.innerWidth <= 600;
     if (isMobile) {
-        // Mobile: 
         finalClassNameElement.style.whiteSpace = 'normal'; 
         finalClassNameElement.style.animation = 'fadeIn 1s forwards'; 
     } else {
-        // Desktop:
         finalClassNameElement.style.whiteSpace = 'nowrap';
         finalClassNameElement.style.animation = `typing ${TYPING_DELAY}s steps(30, end), blink-caret 2s step-end infinite`;
     }
 
-    // Flavor text
     const resultFlavorTextElement = document.getElementById("resultFlavorText");
-    resultFlavorTextElement.innerHTML = resultInfo.flavor; // renders HTML
+    resultFlavorTextElement.innerHTML = resultInfo.flavor;
     resultFlavorTextElement.style.opacity = 0;
     resultFlavorTextElement.style.animation = `fadeIn 1s forwards ${TYPING_DELAY + 0.2}s`;
 
-    // Image
     const resultImageContainer = document.getElementById("finalClassImage");
     resultImageContainer.style.backgroundImage = `url('${resultInfo.imagePath}')`;
     resultImageContainer.style.backgroundColor = `transparent`;
     resultImageContainer.style.border = `4px solid ${resultInfo.color}`;
     resultImageContainer.style.opacity = 0;
     resultImageContainer.style.animation = `fadeIn 1.5s forwards ${TYPING_DELAY + 0.2}s`;
-
-    // Scroll to top
-    window.scrollTo(0, 0);
-
-    // Focus the "Reveal Thy Fate" button after animations
-    setTimeout(() => {
-        const btn = resultScreen.querySelector('button');
-        if (btn) btn.focus();
-    }, (TYPING_DELAY + 1.5) * 1000);
 }
 
-// --- Event Listeners (Keyboard Navigation & Input FIX) ---
+// --- Event Listeners ---
 
+document.addEventListener('DOMContentLoaded', () => {
+    // Determine which page we are on
+    if(document.getElementById('page-auth')) {
+        document.getElementById('playerName').focus();
+    } else if(document.getElementById('page-questions')) {
+        updateProgress();
+    } else if(document.getElementById('page-results')) {
+        initResultPage();
+    }
+});
+
+// Generic Keydown for Questions (only active on Questions page)
 document.addEventListener('keydown', (e) => {
     const currentScreen = document.querySelector('.screen.active');
     if (!currentScreen) return; 
 
     const currentOptions = Array.from(currentScreen.querySelectorAll('input[type="radio"]'));
-    const isInputScreen = currentScreen.id === 'startScreen';
     
     if (e.key === 'Enter') {
-        
         if (document.activeElement.tagName === 'BUTTON') {
             e.preventDefault(); 
             document.activeElement.click(); 
             return;
-        } 
+        }
         
-        if (isInputScreen && document.activeElement.id === 'playerName') {
+        if (document.getElementById('page-auth') && document.activeElement.id === 'playerName') {
              e.preventDefault();
              currentScreen.querySelector('button').click();
              return;
         }
         
         if (currentOptions.length > 0 && document.activeElement.type === 'radio') {
-            // When Enter is pressed on a focused radio button,
-            // manually check it and then proceed to the next question.
             e.preventDefault();
             document.activeElement.checked = true;
             currentScreen.querySelector('button').click();
@@ -439,12 +365,10 @@ document.addEventListener('keydown', (e) => {
         }
     }
     
-    // Handle Arrow/WASD navigation only on screens with radio options
-    if (isInputScreen || currentOptions.length === 0) return;
+    if (currentOptions.length === 0) return;
 
     let currentIndex = currentOptions.findIndex(o => document.activeElement === o);
     if (currentIndex === -1) currentIndex = 0; 
-    
     let nextIndex = currentIndex;
 
     if (e.key === 'ArrowDown' || e.key === 's') {
@@ -457,27 +381,8 @@ document.addEventListener('keydown', (e) => {
 
     if (nextIndex !== currentIndex) {
         currentOptions[nextIndex].focus();
-        // REMOVED: currentOptions[nextIndex].checked = true; 
         currentOptions.forEach((opt, index) => {
-            // Only update aria-checked for visual feedback, not the actual 'checked' state
             opt.nextElementSibling.setAttribute('aria-checked', (index === nextIndex).toString());
         });
-    }
-});
-
-// Initial focus on name input when the page loads
-document.addEventListener('DOMContentLoaded', () => {
-     document.getElementById('playerName').focus();
-     console.log("DOM Loaded. Ready to begin quest.");
-});
-
-// Re-focus on the first radio button after a screen transition
-document.addEventListener('transitionend', (e) => {
-    if (e.target.classList.contains('active') && e.target.id.startsWith('q')) {
-        const firstOption = document.querySelector(`#${e.target.id} .option-container input[type="radio"]`);
-        if (firstOption) {
-            firstOption.focus();
-            
-        }
     }
 });

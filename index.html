@@ -3,203 +3,43 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The Seeker’s Quest</title>
+    <title>The Seeker’s Quest - Welcome</title>
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Cinzel&family=IM+Fell+English&family=Great+Vibes&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
     <link rel="icon" type="image/png" href="scroll.png">
 </head>
-<body>
+<body id="page-index">
     <video autoplay muted loop id="video-bg">
         <source src="https://assets.mixkit.co/videos/preview/mixkit-floating-lights-in-a-dark-hall-3631-large.mp4" type="video/mp4">
         Your browser does not support the video tag.
     </video>
 
-    <div id="messageBox"></div>
-
-    <div class="quiz-container">
+    <div class="quiz-container" style="text-align: center;">
         
         <div class="header">
             <h1>The Seeker’s Quest</h1>
         </div>
 
-        <div id="progress-bar-container">
-            <div class="crystal" data-q="1"></div>
-            <div class="crystal" data-q="2"></div>
-            <div class="crystal" data-q="3"></div>
-            <div class="crystal" data-q="4"></div>
-            <div class="crystal" data-q="5"></div>
-            <div class="crystal" data-q="6"></div>
-            <div class="crystal" data-q="7"></div>
-        </div>
+        <div class="screen active">
+            <div class="question-panel" style="display: flex; flex-direction: column; align-items: center; gap: 20px;">
+                <h2 style="font-size: 2em; color: var(--gold);">Welcome, Traveler</h2>
+                
+                <p style="font-style: italic; opacity: 0.8;">
+                    The threads of fate are woven tight.<br>
+                    Answer the call to reveal your light.
+                </p>
 
-        <div id="startScreen" class="screen active">
-            <div class="question-panel" id="name-panel">
-                <h2>The realm awaits.</h2>
-                <p>Inscribe thy noble name, seeker of fate:</p>
-                <input type="text" id="playerName" placeholder="MAX 20 CHARACTERS" maxlength="20">
-                <button onclick="startQuiz()">Reveal thy next fate</button>
-            </div>
-        </div>
-
-        <div id="q1Screen" class="screen">
-            <div class="question-panel" id="q1-panel">
-                <h2>Quest I — The Art of Sensemaking</h2>
-                <p>When something confusing happens, you usually…</p>
-                <div class="option-container">
-                    <input type="radio" id="q1a1" name="q1" value="A">
-                    <label for="q1a1" class="custom-radio" role="radio" aria-checked="false">Break it into parts and look for patterns</label>
-
-                    <input type="radio" id="q1a2" name="q1" value="B">
-                    <label for="q1a2" class="custom-radio" role="radio" aria-checked="false">Talk it through until it becomes clear</label>
-
-                    <input type="radio" id="q1a3" name="q1" value="C">
-                    <label for="q1a3" class="custom-radio" role="radio" aria-checked="false">Step back and quietly observe more</label>
-
-                    <input type="radio" id="q1a4" name="q1" value="D">
-                    <label for="q1a4" class="custom-radio" role="radio" aria-checked="false">Try a quick practical fix to see what works</label>
+                <div style="margin: 20px 0;">
+                    <p style="font-size: 0.8em; letter-spacing: 2px;">EST. 2026</p>
                 </div>
-                <button onclick="nextQuestion('q1Screen', 'q2Screen', 'q1')">Next Quest</button>
+
+                <button onclick="window.location.href='authentication.html'" style="width: 100%; max-width: 300px;">
+                    Enter the Realm
+                </button>
             </div>
         </div>
-
-        <div id="q2Screen" class="screen">
-            <div class="question-panel" id="q2-panel">
-                <h2>Quest II — The Voice of Insight</h2>
-                <p>When you understand something well, you prefer to…</p>
-                <div class="option-container">
-                    <input type="radio" id="q2a1" name="q2" value="A">
-                    <label for="q2a1" class="custom-radio" role="radio" aria-checked="false">Explain it in a simple, engaging way</label>
-
-                    <input type="radio" id="q2a2" name="q2" value="B">
-                    <label for="q2a2" class="custom-radio" role="radio" aria-checked="false">Write or draw it so others can visualize it</label>
-
-                    <input type="radio" id="q2a3" name="q2" value="C">
-                    <label for="q2a3" class="custom-radio" role="radio" aria-checked="false">Make sure your explanation is accurate and fair</label>
-
-                    <input type="radio" id="q2a4" name="q2" value="D">
-                    <label for="q2a4" class="custom-radio" role="radio" aria-checked="false">Connect it to a bigger system or context</label>
-                </div>
-                <button onclick="nextQuestion('q2Screen', 'q3Screen', 'q2')">Next Quest</button>
-            </div>
-        </div>
-
-        <div id="q3Screen" class="screen">
-            <div class="question-panel" id="q3-panel">
-                <h2>Quest III — The Oath You Follow</h2>
-                <p>Before acting on an important decision, you think most about…</p>
-                <div class="option-container">
-                    <input type="radio" id="q3a1" name="q3" value="A">
-                    <label for="q3a1" class="custom-radio" role="radio" aria-checked="false">Whether it’s right and fair for everyone</label>
-
-                    <input type="radio" id="q3a2" name="q3" value="B">
-                    <label for="q3a2" class="custom-radio" role="radio" aria-checked="false">Whether the facts truly support it</label>
-
-                    <input type="radio" id="q3a3" name="q3" value="C">
-                    <label for="q3a3" class="custom-radio" role="radio" aria-checked="false">Whether it will actually help people</label>
-
-                    <input type="radio" id="q3a4" name="q3" value="D">
-                    <label for="q3a4" class="custom-radio" role="radio" aria-checked="false">Whether it might have hidden risks</label>
-                </div>
-                <button onclick="nextQuestion('q3Screen', 'q4Screen', 'q3')">Next Quest</button>
-            </div>
-        </div>
-
-        <div id="q4Screen" class="screen">
-            <div class="question-panel" id="q4-panel">
-                <h2>Quest IV — Weaver of Systems</h2>
-                <p>When facing many separate issues, you tend to…</p>
-                <div class="option-container">
-                    <input type="radio" id="q4r1" name="q4" value="A">
-                    <label for="q4r1" class="custom-radio" role="radio" aria-checked="false">Link them together into one big picture</label>
-
-                    <input type="radio" id="q4r2" name="q4" value="B">
-                    <label for="q4r2" class="custom-radio" role="radio" aria-checked="false">Organize people so they work in sync</label>
-
-                    <input type="radio" id="q4r3" name="q4" value="C">
-                    <label for="q4r3" class="custom-radio" role="radio" aria-checked="false">Study each part carefully before connecting them</label>
-
-                    <input type="radio" id="q4r4" name="q4" value="D">
-                    <label for="q4r4" class="custom-radio" role="radio" aria-checked="false">Build a solution that ties everything together</label>
-                </div>
-                <button onclick="nextQuestion('q4Screen', 'q5Screen', 'q4')">Next Quest</button>
-            </div>
-        </div>
-
-        <div id="q5Screen" class="screen">
-            <div class="question-panel" id="q5-panel">
-                <h2>Quest V — The Trial of Innovation</h2>
-                <p>When you have a new idea, you usually…</p>
-                <div class="option-container">
-                    <input type="radio" id="q5r1" name="q5" value="A">
-                    <label for="q5r1" class="custom-radio" role="radio" aria-checked="false">Test it quickly to see what happens</label>
-
-                    <input type="radio" id="q5r2" name="q5" value="B">
-                    <label for="q5r2" class="custom-radio" role="radio" aria-checked="false">Compare it with what already exists</label>
-
-                    <input type="radio" id="q5r3" name="q5" value="C">
-                    <label for="q5r3" class="custom-radio" role="radio" aria-checked="false">Ask others for thoughts before changing anything</label>
-
-                    <input type="radio" id="q5r4" name="q5" value="D">
-                    <label for="q5r4" class="custom-radio" role="radio" aria-checked="false">Check if it’s safe and responsible to try</label>
-                </div>
-                <button onclick="nextQuestion('q5Screen', 'q6Screen', 'q5')">Next Quest</button>
-            </div>
-        </div>
-
-        <div id="q6Screen" class="screen">
-            <div class="question-panel" id="q6-panel">
-                <h2>Quest VI — Eyes of the Watcher</h2>
-                <p>In everyday life, people rely on you to…</p>
-                <div class="option-container">
-                    <input type="radio" id="q6r1" name="q6" value="A">
-                    <label for="q6r1" class="custom-radio" role="radio" aria-checked="false">Catch small details others miss</label>
-
-                    <input type="radio" id="q6r2" name="q6" value="B">
-                    <label for="q6r2" class="custom-radio" role="radio" aria-checked="false">Interpret what those details might mean</label>
-
-                    <input type="radio" id="q6r3" name="q6" value="C">
-                    <label for="q6r3" class="custom-radio" role="radio" aria-checked="false">Explain your observations clearly</label>
-
-                    <input type="radio" id="q6r4" name="q6" value="D">
-                    <label for="q6r4" class="custom-radio" role="radio" aria-checked="false">Use what you notice to improve something</label>
-                </div>
-                <button onclick="nextQuestion('q6Screen', 'q7Screen', 'q6')">Next Quest</button>
-            </div>
-        </div>
-
-        <div id="q7Screen" class="screen">
-            <div class="question-panel" id="q7-panel">
-                <h2>Quest VII — Forge of Creation</h2>
-                <p>When inspired, your first instinct is to…</p>
-                <div class="option-container">
-                    <input type="radio" id="q7a1" name="q7" value="A">
-                    <label for="q7a1" class="custom-radio" role="radio" aria-checked="false">Build or make something tangible</label>
-
-                    <input type="radio" id="q7a2" name="q7" value="B">
-                    <label for="q7a2" class="custom-radio" role="radio" aria-checked="false">Sketch the structure before building</label>
-
-                    <input type="radio" id="q7a3" name="q7" value="C">
-                    <label for="q7a3" class="custom-radio" role="radio" aria-checked="false">Share the idea and gather support</label>
-
-                    <input type="radio" id="q7a4" name="q7" value="D">
-                    <label for="q7a4" class="custom-radio" role="radio" aria-checked="false">Make sure what you build will truly help others</label>
-                </div>
-                <button onclick="submitQuiz()">Reveal Thy Fate!</button>
-            </div>
-        </div>
-
-        <div id="resultScreen" class="screen">
-            <h2 id="finalClassName"></h2>
-            <div id="finalClassImage"></div>
-            <p id="resultFlavorText"></p>
-            <button onclick="window.location.reload()">Start A New Quest</button>
-        </div>
-        
 
     </div>
-
-    <script src="script.js"></script>
-
 </body>
 </html>

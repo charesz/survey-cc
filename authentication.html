@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Seeker’s Quest - Begin</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel&family=IM+Fell+English&family=Great+Vibes&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/png" href="scroll.png">
+</head>
+<body id="page-auth">
+    <video autoplay muted loop id="video-bg">
+        <source src="https://assets.mixkit.co/videos/preview/mixkit-floating-lights-in-a-dark-hall-3631-large.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+
+    <div id="messageBox"></div>
+
+    <div class="quiz-container">
+        
+        <div class="header">
+            <h1>The Seeker’s Quest</h1>
+        </div>
+
+        <div id="startScreen" class="screen active">
+            <div class="question-panel" id="name-panel">
+                <h2>The realm awaits.</h2>
+                <p>Inscribe thy noble name, seeker of fate:</p>
+                <input type="text" id="playerName" placeholder="MAX 20 CHARACTERS" maxlength="20">
+                <button onclick="startQuiz()">Reveal thy next fate</button>
+            </div>
+        </div>
+
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
