@@ -20,7 +20,7 @@ const classData = {
                 <li>Prefer thinking before acting</li>
             </ul>
         </div>`,
-        imagePath: "tagapaghinuha.png",
+        imagePath: "../assets/tagapaghinuha.png",
         color: "#3E8EBA",
         bgStyle: "radial-gradient(circle, rgba(62,142,186,0.6) 0%, rgba(34,46,35,0) 70%)"
     },
@@ -40,7 +40,7 @@ const classData = {
                 <li>Believe data should feel human</li>
             </ul>
         </div>`,
-        imagePath: "tagapagsalaysay.png",
+        imagePath: "../assets/tagapagsalaysay.png",
         color: "#C45A29",
         bgStyle: "radial-gradient(circle, rgba(196,90,41,0.6) 0%, rgba(34,46,35,0) 70%)"
     },
@@ -60,7 +60,7 @@ const classData = {
                 <li>Think about the impact of technology</li>
             </ul>
         </div>`,
-        imagePath: "tagapangalaga.png",
+        imagePath: "../assets/tagapangalaga.png",
         color: "#4E7C52",
         bgStyle: "radial-gradient(circle, rgba(78,124,82,0.6) 0%, rgba(34,46,35,0) 70%)"
     },
@@ -80,7 +80,7 @@ const classData = {
                 <li>Love combining ideas from different fields</li>
             </ul>
         </div>`,
-        imagePath: "tagapag-ugnay.png",
+        imagePath: "../assets/tagapag-ugnay.png",
         color: "#d64270",
         bgStyle: "radial-gradient(circle, rgba(214,66,112,0.6) 0%, rgba(34,46,35,0) 70%)"
     },
@@ -100,7 +100,7 @@ const classData = {
                 <li>Enjoy “what if?” questions</li>
             </ul>
         </div>`,
-        imagePath: "tagapagsubok.png",
+        imagePath: "../assets/tagapagsubok.png",
         color: "#A52A2A",
         bgStyle: "radial-gradient(circle, rgba(165,42,42,0.6) 0%, rgba(34,46,35,0) 70%)"
     },
@@ -120,7 +120,7 @@ const classData = {
                 <li>Prefer depth over speed</li>
             </ul>
         </div>`,
-        imagePath: "tagapagmasid.png",
+        imagePath: "../assets/tagapagmasid.png",
         color: "#6A5ACD",
         bgStyle: "radial-gradient(circle, rgba(106,90,205,0.6) 0%, rgba(34,46,35,0) 70%)"
     },
@@ -140,7 +140,7 @@ const classData = {
                 <li>Are creatively technical</li>
             </ul>
         </div>`,
-        imagePath: "tagapaglikha.png",
+        imagePath: "../assets/tagapaglikha.png",
         color: "#D6A639",
         bgStyle: "radial-gradient(circle, rgba(214,166,57,0.6) 0%, rgba(34,46,35,0) 70%)"
     }
@@ -202,7 +202,7 @@ function startQuiz() {
     localStorage.setItem("playerName", playerName);
     localStorage.removeItem("answers"); // Clear old answers
     
-    window.location.href = "questions.html"; // Redirect to Questions Page
+    window.location.href = "../pages/questions.html"; // Redirect to Questions Page
 }
 
 // 2. Questions Page Logic
@@ -252,7 +252,7 @@ function submitQuiz() {
     answers["q7"] = checkedQ7.value;
     localStorage.setItem("answers", JSON.stringify(answers));
 
-    window.location.href = "results.html"; // Redirect to Results Page
+    window.location.href = "../pages/results.html"; // Redirect to Results Page
 }
 
 // 3. Results Page Logic
@@ -262,7 +262,7 @@ function initResultPage() {
     // Check if data exists
     if (!answers || Object.keys(answers).length === 0) {
         // If no answers, redirect back to start
-        window.location.href = "authentication.html";
+        window.location.href = "../pages/authentication.html";
         return;
     }
 
