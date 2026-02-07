@@ -4,10 +4,8 @@ from sqlmodel import SQLModel, Field, Session, create_engine, select
 from pydantic import BaseModel
 from typing import Dict
 import json
+from database import engine, get_session 
 
-# Database setup
-DATABASE_URL = "sqlite:///./survey.db"
-engine = create_engine(DATABASE_URL, echo=True)
 
 # --- Models ---
 class Archetype(SQLModel, table=True):
