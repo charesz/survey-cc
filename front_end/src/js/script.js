@@ -121,8 +121,8 @@ async function submitQuiz() {
     // --- prepare payload ---
     const payload = {
         playerName: playerName, // must match Pydantic
-        answers: answers,       // object, not JSON string
-        archetype_id: finalId   // integer
+        answers: answers,       
+        archetype_id: finalId   
     };
 
     console.log("Submitting payload:", payload); // ✅ debug

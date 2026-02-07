@@ -24,7 +24,7 @@ class Archetype(SQLModel, table=True):
 class UserResult(SQLModel, table=True):
     id: int = Field(default=None, primary_key=True)
     player_name: str
-    answers: str  # store as JSON string
+    answers: str  
     archetype_id: int
 
 # Create tables
@@ -47,7 +47,7 @@ class ResultInput(BaseModel):
 
 
 # --- Seed archetypes ---
-import seed_data  # make sure seed_data.py has `classData = [ {...}, {...}, ... ]`
+import seed_data  
 with Session(engine) as session:
     existing = session.exec(select(Archetype)).all()
     if len(existing) == 0:

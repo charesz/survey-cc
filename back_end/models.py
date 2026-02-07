@@ -17,5 +17,5 @@ class Archetype(SQLModel, table=True):
 class UserResult(SQLModel, table=True):
     id: Optional[int] = Field(default=None, primary_key=True)
     player_name: str
-    answers: str  # JSON string of answers
+    answers: str  
     archetype_id: int
